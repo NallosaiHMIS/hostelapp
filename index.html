@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Services Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: linear-gradient(to right top, #0f0c29, #302b63, #24243e);
+      min-height: 100vh;
+      color: white;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ---------- HEADER ---------- */
+    header {
+      padding: 40px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .logo-inline {
+      height: 60px;
+      width: auto;
+      flex-shrink: 0;
+    }
+
+    .header-container h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: #ccc;
+      margin-top: 10px;
+    }
+
+    /* ---------- MAIN GRID ---------- */
+    .app-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 40px 10vw;
+      flex-grow: 1;
+    }
+
+    .card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 25px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transform-style: preserve-3d;
+      border: 2px solid transparent;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(135deg, #6e00ff, #00d0ff, #6e00ff);
+      z-index: 0;
+      border-radius: 20px;
+      animation: borderGlow 4s linear infinite;
+      background-size: 300% 300%;
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .card:hover {
+      transform: perspective(1000px) rotateX(5deg) rotateY(5deg) scale(1.04);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #eee;
+      margin-bottom: 20px;
+    }
+
+    .card a {
+      display: inline-block;
+      padding: 10px 18px;
+      background: #ffffff;
+      color: #111;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .card a:hover {
+      background: #ddd;
+    }
+
+    .card a.disabled {
+      background: #777;
+      color: #bbb;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .card i {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 2rem;
+      color: #ffffffaa;
+      animation: shimmerPulse 3s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      background-color: rgba(0, 0, 0, 0.2);
+      color: #f0f0f0;
+    }
+
+    footer a {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    /* ---------- ANIMATIONS ---------- */
+    @keyframes borderGlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes shimmerPulse {
+      0%, 100% {
+        opacity: 0.4;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 600px) {
+      .header-container {
+        flex-direction: column;
+      }
+
+      .logo-inline {
+        height: 50px;
+      }
+
+      .header-container h1 {
+        font-size: 1.5rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+
+      .card h3 {
+        font-size: 1.3rem;
+      }
+
+      .card p {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER with inline logo -->
+  <header>
+    <div class="header-container">
+      <img src="https://raw.githubusercontent.com/AdwHappyhostel/adw/main/Tamil_Nadu_Emblem.png" alt="Tamil Nadu Emblem" class="logo-inline" />
+      <h1>ADI DRAVIDAR AND TRIBAL WELFARE DEPARTMENT</h1>
+    </div>
+    <p class="subtitle">All hostel apps in one place</p>
+  </header>
+
+  <!-- APP GRID -->
+  <section class="app-grid">
+    <div class="card">
+      <div class="card-content">
+        <i class="fas fa-map-marker-alt"></i>
+        <h3>Nearby Hostel Finder (By College)</h3>
+        <p>Find hostels near your college based on your place of study.</p>
+        <a href="https://nallosaihmis.github.io/adw/" target="_blank">Launch App</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-content">
+        <i class="fas fa-location-arrow"></i>
+        <h3>Hostel Finder (Live Location)</h3>
+        <p>Discover hostels around you in real-time using GPS location.</p>
+        <a href="https://nallosaihmis.github.io/hostelfinder/" target="_blank">Launch App</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-content">
+        <i class="fas fa-building"></i>
+        <h3>Nallosai - Hostel Management</h3>
+        <p>Manage student data, Daily Attendace, Stock Management, Staff Management & Related reports, and more.</p>
+        <a href="https://nallosai.tn.gov.in/" target="_blank">Launch App</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-content">
+        <i class="fas fa-utensils"></i>
+        <h3>Amuthasurabhi - Food Monitor</h3>
+        <p>Track food quality and daily menus served in Common Kitchen and Hostel Kitchen hostels.</p>
+        <a href="https://www.amudhasurabhi.tn.gov.in/auth/login" target="_blank">Launch App</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-content">
+        <i class="fas fa-clipboard-check"></i>
+        <h3>Viduthiparvai - Inspections</h3>
+        <p>Digitized hostel inspections with real-time report generation.</p>
+        <a class="disabled">Coming Soon</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-content">
+        <i class="fas fa-comment-dots"></i>
+        <h3>Student Feedback Portal</h3>
+        <p>Submit, track, and resolve complaints — securely and efficiently.</p>
+        <a href="https://nallosai.tn.gov.in/adhmStudent/index.php" target="_blank">Launch App</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 ADI DRAVIDAR AND TRIBAL WELFARE DEPARTMENT - All rights reserved.</p>
+    <p>Toll-Free: <a href="tel:1800-599-7638">1800-599-7638</a></p>
+  </footer>
+
+</body>
+</html>
